@@ -192,6 +192,13 @@ test('combine()', function (t) {
             s2t.end();
         });
 
+        st.test('with arrayLimit 1', function (s2t) {
+            var combined = utils.combine([], 'a', 1, false);
+            s2t.deepEqual(combined, ['a'], 'stays as array when count equals limit');
+            s2t.ok(Array.isArray(combined), 'result is an array');
+            s2t.end();
+        });
+
         st.test('with arrayLimit 0', function (s2t) {
             var combined = utils.combine([], 'a', 0, false);
             s2t.deepEqual(combined, { 0: 'a' }, 'converts single element to object with arrayLimit 0');
